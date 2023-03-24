@@ -25,7 +25,7 @@ function getRandomInt(min, max) {
 }
 
 function loop() {
-    requestAnimationFrame(loop)
+  requestAnimationFrame(loop);
   if (++count < 7) {
     return;
   }
@@ -70,41 +70,38 @@ function loop() {
       food.x = getRandomInt(0, 25) * grid;
       food.y = getRandomInt(0, 25) * grid;
     }
-    for(var i = index + 1; i < snake.cells.length; i++) {
-        if(cell.x === snake.cells[i].x && cell.y === snake.cells[i].y) {
-            if(score > max){
-                max =score
-            }
-            snake.x = 160,
-            snake.y = 160,
-            snake.cells = [];
-            snake.maxCells = 1;
-            snake.dx = grid;
-            snake.dy = 0;
-            score = 0;
-            food.x = getRandomInt(0, 25) * grid;
-            food.y = getRandomInt(0, 25) * grid;
-            document.getElementById('score').innerHTML =max;
-
+    for (var i = index + 1; i < snake.cells.length; i++) {
+      if (cell.x === snake.cells[i].x && cell.y === snake.cells[i].y) {
+        if (score > max) {
+          max = score;
         }
+        (snake.x = 160), (snake.y = 160), (snake.cells = []);
+        snake.maxCells = 1;
+        snake.dx = grid;
+        snake.dy = 0;
+        score = 0;
+        food.x = getRandomInt(0, 25) * grid;
+        food.y = getRandomInt(0, 25) * grid;
+        document.getElementById("score").innerHTML = max;
+      }
     }
   });
 }
 
-document.addEventListener('keydown', function(e) {
-    if(e.keyCode === 37 && snake.dx === 0){
-        snake.dx = -grid;
-        snake.dy = 0
-    }else if(e.keyCode === 38 && snake.dy === 0){
-        snake.dy = -grid;
-        snake.dx = 0
-    }else if(e.keyCode === 39 && snake.dx === 0){
-        snake.dx = grid;
-        snake.dy = 0
-    }else if(e.keyCode === 40 && snake.dy === 0){
-        snake.dy = grid;
-        snake.dx = 0
-    }
-})
+document.addEventListener("keydown", function (e) {
+  if (e.keyCode === 37 && snake.dx === 0) {
+    snake.dx = -grid;
+    snake.dy = 0;
+  } else if (e.keyCode === 38 && snake.dy === 0) {
+    snake.dy = -grid;
+    snake.dx = 0;
+  } else if (e.keyCode === 39 && snake.dx === 0) {
+    snake.dx = grid;
+    snake.dy = 0;
+  } else if (e.keyCode === 40 && snake.dy === 0) {
+    snake.dy = grid;
+    snake.dx = 0;
+  }
+});
 
-requestAnimationFrame(loop)
+requestAnimationFrame(loop);
